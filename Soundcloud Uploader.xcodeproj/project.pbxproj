@@ -57,8 +57,8 @@
 		DD9CF6601C109C1000B41FBB /* Request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Request.cpp; sourceTree = "<group>"; };
 		DD9CF6611C109C1000B41FBB /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		DD9CF6621C109C1000B41FBB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
-		DD9CF6631C109C1000B41FBB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		DD9CF6641C109C1000B41FBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD9CF6631C109C1000B41FBB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Soundcloud Uploader/Images.xcassets"; sourceTree = "<group>"; };
+		DD9CF6641C109C1000B41FBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Soundcloud Uploader/Info.plist"; sourceTree = "<group>"; };
 		DD9CF6651C109C1000B41FBB /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
 		DD9CF6661C109C1000B41FBB /* Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main.h; sourceTree = "<group>"; };
 		DD9CF6671C109C1000B41FBB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -92,8 +92,8 @@
 			children = (
 				DD9CF64E1C109C1000B41FBB /* Soundcloud Uploader */,
 				DD9CF6681C109C1000B41FBB /* Soundcloud UploaderTests */,
-				DD9D2C411BD53C9600DC30A6 /* WebKit.framework */,
-				DD3661CC1BC7B8F40000D2ED /* AppKit.framework */,
+				DD9CF67A1C109DDA00B41FBB /* Frameworks */,
+				DD9CF6791C109DCA00B41FBB /* Resources */,
 				DD36619A1BC7AEB00000D2ED /* Products */,
 			);
 			sourceTree = "<group>";
@@ -110,14 +110,11 @@
 		DD9CF64E1C109C1000B41FBB /* Soundcloud Uploader */ = {
 			isa = PBXGroup;
 			children = (
+				DD9CF6551C109C1000B41FBB /* Facebook */,
 				DD9CF64F1C109C1000B41FBB /* AppDelegate.h */,
 				DD9CF6501C109C1000B41FBB /* AppDelegate.mm */,
 				DD9CF6511C109C1000B41FBB /* AppDelegateBridge.h */,
 				DD9CF6521C109C1000B41FBB /* AppDelegateBridge.mm */,
-				DD9CF6531C109C1000B41FBB /* MainMenu.xib */,
-				DD9CF6551C109C1000B41FBB /* Facebook */,
-				DD9CF6631C109C1000B41FBB /* Images.xcassets */,
-				DD9CF6641C109C1000B41FBB /* Info.plist */,
 				DD9CF6651C109C1000B41FBB /* Main.cpp */,
 				DD9CF6661C109C1000B41FBB /* Main.h */,
 				DD9CF6671C109C1000B41FBB /* main.m */,
@@ -152,6 +149,25 @@
 				DD9CF66A1C109C1000B41FBB /* Info.plist */,
 			);
 			path = "Soundcloud UploaderTests";
+			sourceTree = "<group>";
+		};
+		DD9CF6791C109DCA00B41FBB /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				DD9CF6531C109C1000B41FBB /* MainMenu.xib */,
+				DD9CF6641C109C1000B41FBB /* Info.plist */,
+				DD9CF6631C109C1000B41FBB /* Images.xcassets */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
+		DD9CF67A1C109DDA00B41FBB /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				DD3661CC1BC7B8F40000D2ED /* AppKit.framework */,
+				DD9D2C411BD53C9600DC30A6 /* WebKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -292,6 +308,7 @@
 				DD9CF6541C109C1000B41FBB /* Base */,
 			);
 			name = MainMenu.xib;
+			path = "Soundcloud Uploader";
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
