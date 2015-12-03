@@ -1,0 +1,500 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		DD3661CD1BC7B8F40000D2ED /* AppKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD3661CC1BC7B8F40000D2ED /* AppKit.framework */; };
+		DD9CF66B1C109C1000B41FBB /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6501C109C1000B41FBB /* AppDelegate.mm */; settings = {ASSET_TAGS = (); }; };
+		DD9CF66C1C109C1000B41FBB /* AppDelegateBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6521C109C1000B41FBB /* AppDelegateBridge.mm */; settings = {ASSET_TAGS = (); }; };
+		DD9CF66D1C109C1000B41FBB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9CF6531C109C1000B41FBB /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
+		DD9CF66E1C109C1000B41FBB /* AccessTokenStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6561C109C1000B41FBB /* AccessTokenStorage.cpp */; settings = {ASSET_TAGS = (); }; };
+		DD9CF66F1C109C1000B41FBB /* ImageCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF65A1C109C1000B41FBB /* ImageCache.cpp */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6701C109C1000B41FBB /* Notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF65C1C109C1000B41FBB /* Notifications.cpp */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6711C109C1000B41FBB /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF65E1C109C1000B41FBB /* Parser.cpp */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6721C109C1000B41FBB /* Request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6601C109C1000B41FBB /* Request.cpp */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6731C109C1000B41FBB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9CF6631C109C1000B41FBB /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6741C109C1000B41FBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD9CF6641C109C1000B41FBB /* Info.plist */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6751C109C1000B41FBB /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6651C109C1000B41FBB /* Main.cpp */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6761C109C1000B41FBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6671C109C1000B41FBB /* main.m */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6771C109C1000B41FBB /* Facebook_NotificationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6691C109C1000B41FBB /* Facebook_NotificationsTests.m */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6781C109C1000B41FBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD9CF66A1C109C1000B41FBB /* Info.plist */; settings = {ASSET_TAGS = (); }; };
+		DD9D2C421BD53C9600DC30A6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9D2C411BD53C9600DC30A6 /* WebKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		DD3661AD1BC7AEB00000D2ED /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = DD3661911BC7AEB00000D2ED /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DD3661981BC7AEB00000D2ED;
+			remoteInfo = "Facebook Notifications";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		DD3661991BC7AEB00000D2ED /* Soundcloud Uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Soundcloud Uploader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD3661AC1BC7AEB00000D2ED /* Soundcloud Uploader.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Soundcloud Uploader.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD3661CC1BC7B8F40000D2ED /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		DD9CF64F1C109C1000B41FBB /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		DD9CF6501C109C1000B41FBB /* AppDelegate.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
+		DD9CF6511C109C1000B41FBB /* AppDelegateBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateBridge.h; sourceTree = "<group>"; };
+		DD9CF6521C109C1000B41FBB /* AppDelegateBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegateBridge.mm; sourceTree = "<group>"; };
+		DD9CF6541C109C1000B41FBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		DD9CF6561C109C1000B41FBB /* AccessTokenStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AccessTokenStorage.cpp; sourceTree = "<group>"; };
+		DD9CF6571C109C1000B41FBB /* AccessTokenStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessTokenStorage.h; sourceTree = "<group>"; };
+		DD9CF6581C109C1000B41FBB /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		DD9CF6591C109C1000B41FBB /* FacebookException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookException.h; sourceTree = "<group>"; };
+		DD9CF65A1C109C1000B41FBB /* ImageCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageCache.cpp; sourceTree = "<group>"; };
+		DD9CF65B1C109C1000B41FBB /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
+		DD9CF65C1C109C1000B41FBB /* Notifications.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Notifications.cpp; sourceTree = "<group>"; };
+		DD9CF65D1C109C1000B41FBB /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
+		DD9CF65E1C109C1000B41FBB /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
+		DD9CF65F1C109C1000B41FBB /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		DD9CF6601C109C1000B41FBB /* Request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Request.cpp; sourceTree = "<group>"; };
+		DD9CF6611C109C1000B41FBB /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
+		DD9CF6621C109C1000B41FBB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		DD9CF6631C109C1000B41FBB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		DD9CF6641C109C1000B41FBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD9CF6651C109C1000B41FBB /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
+		DD9CF6661C109C1000B41FBB /* Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main.h; sourceTree = "<group>"; };
+		DD9CF6671C109C1000B41FBB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DD9CF6691C109C1000B41FBB /* Facebook_NotificationsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook_NotificationsTests.m; sourceTree = "<group>"; };
+		DD9CF66A1C109C1000B41FBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD9D2C411BD53C9600DC30A6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		DD3661961BC7AEB00000D2ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD9D2C421BD53C9600DC30A6 /* WebKit.framework in Frameworks */,
+				DD3661CD1BC7B8F40000D2ED /* AppKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD3661A91BC7AEB00000D2ED /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		DD3661901BC7AEB00000D2ED = {
+			isa = PBXGroup;
+			children = (
+				DD9CF64E1C109C1000B41FBB /* Soundcloud Uploader */,
+				DD9CF6681C109C1000B41FBB /* Soundcloud UploaderTests */,
+				DD9D2C411BD53C9600DC30A6 /* WebKit.framework */,
+				DD3661CC1BC7B8F40000D2ED /* AppKit.framework */,
+				DD36619A1BC7AEB00000D2ED /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		DD36619A1BC7AEB00000D2ED /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				DD3661991BC7AEB00000D2ED /* Soundcloud Uploader.app */,
+				DD3661AC1BC7AEB00000D2ED /* Soundcloud Uploader.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		DD9CF64E1C109C1000B41FBB /* Soundcloud Uploader */ = {
+			isa = PBXGroup;
+			children = (
+				DD9CF64F1C109C1000B41FBB /* AppDelegate.h */,
+				DD9CF6501C109C1000B41FBB /* AppDelegate.mm */,
+				DD9CF6511C109C1000B41FBB /* AppDelegateBridge.h */,
+				DD9CF6521C109C1000B41FBB /* AppDelegateBridge.mm */,
+				DD9CF6531C109C1000B41FBB /* MainMenu.xib */,
+				DD9CF6551C109C1000B41FBB /* Facebook */,
+				DD9CF6631C109C1000B41FBB /* Images.xcassets */,
+				DD9CF6641C109C1000B41FBB /* Info.plist */,
+				DD9CF6651C109C1000B41FBB /* Main.cpp */,
+				DD9CF6661C109C1000B41FBB /* Main.h */,
+				DD9CF6671C109C1000B41FBB /* main.m */,
+			);
+			path = "Soundcloud Uploader";
+			sourceTree = "<group>";
+		};
+		DD9CF6551C109C1000B41FBB /* Facebook */ = {
+			isa = PBXGroup;
+			children = (
+				DD9CF6561C109C1000B41FBB /* AccessTokenStorage.cpp */,
+				DD9CF6571C109C1000B41FBB /* AccessTokenStorage.h */,
+				DD9CF6581C109C1000B41FBB /* Data.h */,
+				DD9CF6591C109C1000B41FBB /* FacebookException.h */,
+				DD9CF65A1C109C1000B41FBB /* ImageCache.cpp */,
+				DD9CF65B1C109C1000B41FBB /* ImageCache.h */,
+				DD9CF65C1C109C1000B41FBB /* Notifications.cpp */,
+				DD9CF65D1C109C1000B41FBB /* Notifications.h */,
+				DD9CF65E1C109C1000B41FBB /* Parser.cpp */,
+				DD9CF65F1C109C1000B41FBB /* Parser.h */,
+				DD9CF6601C109C1000B41FBB /* Request.cpp */,
+				DD9CF6611C109C1000B41FBB /* Request.h */,
+				DD9CF6621C109C1000B41FBB /* User.h */,
+			);
+			path = Facebook;
+			sourceTree = "<group>";
+		};
+		DD9CF6681C109C1000B41FBB /* Soundcloud UploaderTests */ = {
+			isa = PBXGroup;
+			children = (
+				DD9CF6691C109C1000B41FBB /* Facebook_NotificationsTests.m */,
+				DD9CF66A1C109C1000B41FBB /* Info.plist */,
+			);
+			path = "Soundcloud UploaderTests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		DD3661981BC7AEB00000D2ED /* Soundcloud Uploader */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD3661B61BC7AEB00000D2ED /* Build configuration list for PBXNativeTarget "Soundcloud Uploader" */;
+			buildPhases = (
+				DD3661951BC7AEB00000D2ED /* Sources */,
+				DD3661961BC7AEB00000D2ED /* Frameworks */,
+				DD3661971BC7AEB00000D2ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Soundcloud Uploader";
+			productName = "Facebook Notifications";
+			productReference = DD3661991BC7AEB00000D2ED /* Soundcloud Uploader.app */;
+			productType = "com.apple.product-type.application";
+		};
+		DD3661AB1BC7AEB00000D2ED /* Soundcloud UploaderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DD3661B91BC7AEB00000D2ED /* Build configuration list for PBXNativeTarget "Soundcloud UploaderTests" */;
+			buildPhases = (
+				DD3661A81BC7AEB00000D2ED /* Sources */,
+				DD3661A91BC7AEB00000D2ED /* Frameworks */,
+				DD3661AA1BC7AEB00000D2ED /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DD3661AE1BC7AEB00000D2ED /* PBXTargetDependency */,
+			);
+			name = "Soundcloud UploaderTests";
+			productName = "Facebook NotificationsTests";
+			productReference = DD3661AC1BC7AEB00000D2ED /* Soundcloud Uploader.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		DD3661911BC7AEB00000D2ED /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0640;
+				ORGANIZATIONNAME = "Jack Farrelly";
+				TargetAttributes = {
+					DD3661981BC7AEB00000D2ED = {
+						CreatedOnToolsVersion = 6.4;
+					};
+					DD3661AB1BC7AEB00000D2ED = {
+						CreatedOnToolsVersion = 6.4;
+						TestTargetID = DD3661981BC7AEB00000D2ED;
+					};
+				};
+			};
+			buildConfigurationList = DD3661941BC7AEB00000D2ED /* Build configuration list for PBXProject "Soundcloud Uploader" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = DD3661901BC7AEB00000D2ED;
+			productRefGroup = DD36619A1BC7AEB00000D2ED /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				DD3661981BC7AEB00000D2ED /* Soundcloud Uploader */,
+				DD3661AB1BC7AEB00000D2ED /* Soundcloud UploaderTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		DD3661971BC7AEB00000D2ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD9CF6781C109C1000B41FBB /* Info.plist in Resources */,
+				DD9CF66D1C109C1000B41FBB /* MainMenu.xib in Resources */,
+				DD9CF6731C109C1000B41FBB /* Images.xcassets in Resources */,
+				DD9CF6741C109C1000B41FBB /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD3661AA1BC7AEB00000D2ED /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		DD3661951BC7AEB00000D2ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DD9CF6771C109C1000B41FBB /* Facebook_NotificationsTests.m in Sources */,
+				DD9CF66B1C109C1000B41FBB /* AppDelegate.mm in Sources */,
+				DD9CF66C1C109C1000B41FBB /* AppDelegateBridge.mm in Sources */,
+				DD9CF6721C109C1000B41FBB /* Request.cpp in Sources */,
+				DD9CF66F1C109C1000B41FBB /* ImageCache.cpp in Sources */,
+				DD9CF66E1C109C1000B41FBB /* AccessTokenStorage.cpp in Sources */,
+				DD9CF6711C109C1000B41FBB /* Parser.cpp in Sources */,
+				DD9CF6751C109C1000B41FBB /* Main.cpp in Sources */,
+				DD9CF6761C109C1000B41FBB /* main.m in Sources */,
+				DD9CF6701C109C1000B41FBB /* Notifications.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DD3661A81BC7AEB00000D2ED /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		DD3661AE1BC7AEB00000D2ED /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = DD3661981BC7AEB00000D2ED /* Soundcloud Uploader */;
+			targetProxy = DD3661AD1BC7AEB00000D2ED /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		DD9CF6531C109C1000B41FBB /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				DD9CF6541C109C1000B41FBB /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		DD3661B41BC7AEB00000D2ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DD3661B51BC7AEB00000D2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		DD3661B71BC7AEB00000D2ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				INFOPLIST_FILE = "Soundcloud Uploader/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/lib,
+				);
+				OTHER_CFLAGS = (
+					"-I/usr/local/include",
+					"-I/usr/include",
+				);
+				OTHER_LDFLAGS = (
+					"-lcurl",
+					"-lboost_system",
+					"-lboost_filesystem",
+				);
+				PRODUCT_NAME = "Soundcloud Uploader";
+			};
+			name = Debug;
+		};
+		DD3661B81BC7AEB00000D2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = "";
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
+				INFOPLIST_FILE = "Soundcloud Uploader/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					/usr/local/lib,
+					/usr/lib,
+				);
+				OTHER_CFLAGS = (
+					"-I/usr/local/include",
+					"-I/usr/include",
+				);
+				OTHER_LDFLAGS = (
+					"-lcurl",
+					"-lboost_system",
+					"-lboost_filesystem",
+				);
+				PRODUCT_NAME = "Soundcloud Uploader";
+			};
+			name = Release;
+		};
+		DD3661BA1BC7AEB00000D2ED /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Soundcloud UploaderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "Soundcloud Uploader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Soundcloud Uploader.app/Contents/MacOS/Soundcloud Uploader";
+			};
+			name = Debug;
+		};
+		DD3661BB1BC7AEB00000D2ED /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Soundcloud UploaderTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "Soundcloud Uploader";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Soundcloud Uploader.app/Contents/MacOS/Soundcloud Uploader";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		DD3661941BC7AEB00000D2ED /* Build configuration list for PBXProject "Soundcloud Uploader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD3661B41BC7AEB00000D2ED /* Debug */,
+				DD3661B51BC7AEB00000D2ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD3661B61BC7AEB00000D2ED /* Build configuration list for PBXNativeTarget "Soundcloud Uploader" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD3661B71BC7AEB00000D2ED /* Debug */,
+				DD3661B81BC7AEB00000D2ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DD3661B91BC7AEB00000D2ED /* Build configuration list for PBXNativeTarget "Soundcloud UploaderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DD3661BA1BC7AEB00000D2ED /* Debug */,
+				DD3661BB1BC7AEB00000D2ED /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = DD3661911BC7AEB00000D2ED /* Project object */;
+}
