@@ -11,17 +11,15 @@
 		DD9CF66B1C109C1000B41FBB /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6501C109C1000B41FBB /* AppDelegate.mm */; settings = {ASSET_TAGS = (); }; };
 		DD9CF66C1C109C1000B41FBB /* AppDelegateBridge.mm in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6521C109C1000B41FBB /* AppDelegateBridge.mm */; settings = {ASSET_TAGS = (); }; };
 		DD9CF66D1C109C1000B41FBB /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = DD9CF6531C109C1000B41FBB /* MainMenu.xib */; settings = {ASSET_TAGS = (); }; };
-		DD9CF66E1C109C1000B41FBB /* AccessTokenStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6561C109C1000B41FBB /* AccessTokenStorage.cpp */; settings = {ASSET_TAGS = (); }; };
-		DD9CF66F1C109C1000B41FBB /* ImageCache.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF65A1C109C1000B41FBB /* ImageCache.cpp */; settings = {ASSET_TAGS = (); }; };
-		DD9CF6701C109C1000B41FBB /* Notifications.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF65C1C109C1000B41FBB /* Notifications.cpp */; settings = {ASSET_TAGS = (); }; };
-		DD9CF6711C109C1000B41FBB /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF65E1C109C1000B41FBB /* Parser.cpp */; settings = {ASSET_TAGS = (); }; };
-		DD9CF6721C109C1000B41FBB /* Request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6601C109C1000B41FBB /* Request.cpp */; settings = {ASSET_TAGS = (); }; };
 		DD9CF6731C109C1000B41FBB /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DD9CF6631C109C1000B41FBB /* Images.xcassets */; settings = {ASSET_TAGS = (); }; };
 		DD9CF6741C109C1000B41FBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD9CF6641C109C1000B41FBB /* Info.plist */; settings = {ASSET_TAGS = (); }; };
 		DD9CF6751C109C1000B41FBB /* Main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6651C109C1000B41FBB /* Main.cpp */; settings = {ASSET_TAGS = (); }; };
 		DD9CF6761C109C1000B41FBB /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6671C109C1000B41FBB /* main.m */; settings = {ASSET_TAGS = (); }; };
 		DD9CF6771C109C1000B41FBB /* Facebook_NotificationsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6691C109C1000B41FBB /* Facebook_NotificationsTests.m */; settings = {ASSET_TAGS = (); }; };
 		DD9CF6781C109C1000B41FBB /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = DD9CF66A1C109C1000B41FBB /* Info.plist */; settings = {ASSET_TAGS = (); }; };
+		DD9CF6891C10A48C00B41FBB /* AccessTokenStorage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF67C1C10A48C00B41FBB /* AccessTokenStorage.cpp */; settings = {ASSET_TAGS = (); }; };
+		DD9CF68C1C10A48C00B41FBB /* Parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6841C10A48C00B41FBB /* Parser.cpp */; settings = {ASSET_TAGS = (); }; };
+		DD9CF68D1C10A48C00B41FBB /* Request.cpp in Sources */ = {isa = PBXBuildFile; fileRef = DD9CF6861C10A48C00B41FBB /* Request.cpp */; settings = {ASSET_TAGS = (); }; };
 		DD9D2C421BD53C9600DC30A6 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DD9D2C411BD53C9600DC30A6 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
@@ -44,26 +42,21 @@
 		DD9CF6511C109C1000B41FBB /* AppDelegateBridge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegateBridge.h; sourceTree = "<group>"; };
 		DD9CF6521C109C1000B41FBB /* AppDelegateBridge.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegateBridge.mm; sourceTree = "<group>"; };
 		DD9CF6541C109C1000B41FBB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		DD9CF6561C109C1000B41FBB /* AccessTokenStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AccessTokenStorage.cpp; sourceTree = "<group>"; };
-		DD9CF6571C109C1000B41FBB /* AccessTokenStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessTokenStorage.h; sourceTree = "<group>"; };
-		DD9CF6581C109C1000B41FBB /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
-		DD9CF6591C109C1000B41FBB /* FacebookException.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FacebookException.h; sourceTree = "<group>"; };
-		DD9CF65A1C109C1000B41FBB /* ImageCache.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ImageCache.cpp; sourceTree = "<group>"; };
-		DD9CF65B1C109C1000B41FBB /* ImageCache.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageCache.h; sourceTree = "<group>"; };
-		DD9CF65C1C109C1000B41FBB /* Notifications.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Notifications.cpp; sourceTree = "<group>"; };
-		DD9CF65D1C109C1000B41FBB /* Notifications.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Notifications.h; sourceTree = "<group>"; };
-		DD9CF65E1C109C1000B41FBB /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
-		DD9CF65F1C109C1000B41FBB /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
-		DD9CF6601C109C1000B41FBB /* Request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Request.cpp; sourceTree = "<group>"; };
-		DD9CF6611C109C1000B41FBB /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
-		DD9CF6621C109C1000B41FBB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		DD9CF6631C109C1000B41FBB /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = "Soundcloud Uploader/Images.xcassets"; sourceTree = "<group>"; };
 		DD9CF6641C109C1000B41FBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "Soundcloud Uploader/Info.plist"; sourceTree = "<group>"; };
 		DD9CF6651C109C1000B41FBB /* Main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Main.cpp; sourceTree = "<group>"; };
 		DD9CF6661C109C1000B41FBB /* Main.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Main.h; sourceTree = "<group>"; };
-		DD9CF6671C109C1000B41FBB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		DD9CF6671C109C1000B41FBB /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = "Soundcloud Uploader/main.m"; sourceTree = "<group>"; };
 		DD9CF6691C109C1000B41FBB /* Facebook_NotificationsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Facebook_NotificationsTests.m; sourceTree = "<group>"; };
 		DD9CF66A1C109C1000B41FBB /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DD9CF67C1C10A48C00B41FBB /* AccessTokenStorage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AccessTokenStorage.cpp; sourceTree = "<group>"; };
+		DD9CF67D1C10A48C00B41FBB /* AccessTokenStorage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AccessTokenStorage.h; sourceTree = "<group>"; };
+		DD9CF67E1C10A48C00B41FBB /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		DD9CF67F1C10A48C00B41FBB /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		DD9CF6841C10A48C00B41FBB /* Parser.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Parser.cpp; sourceTree = "<group>"; };
+		DD9CF6851C10A48C00B41FBB /* Parser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Parser.h; sourceTree = "<group>"; };
+		DD9CF6861C10A48C00B41FBB /* Request.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Request.cpp; sourceTree = "<group>"; };
+		DD9CF6871C10A48C00B41FBB /* Request.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Request.h; sourceTree = "<group>"; };
 		DD9D2C411BD53C9600DC30A6 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
@@ -95,6 +88,7 @@
 				DD9CF67A1C109DDA00B41FBB /* Frameworks */,
 				DD9CF6791C109DCA00B41FBB /* Resources */,
 				DD36619A1BC7AEB00000D2ED /* Products */,
+				DD9CF6671C109C1000B41FBB /* main.m */,
 			);
 			sourceTree = "<group>";
 		};
@@ -110,36 +104,15 @@
 		DD9CF64E1C109C1000B41FBB /* Soundcloud Uploader */ = {
 			isa = PBXGroup;
 			children = (
-				DD9CF6551C109C1000B41FBB /* Facebook */,
+				DD9CF67B1C10A48C00B41FBB /* Soundcloud */,
 				DD9CF64F1C109C1000B41FBB /* AppDelegate.h */,
 				DD9CF6501C109C1000B41FBB /* AppDelegate.mm */,
 				DD9CF6511C109C1000B41FBB /* AppDelegateBridge.h */,
 				DD9CF6521C109C1000B41FBB /* AppDelegateBridge.mm */,
 				DD9CF6651C109C1000B41FBB /* Main.cpp */,
 				DD9CF6661C109C1000B41FBB /* Main.h */,
-				DD9CF6671C109C1000B41FBB /* main.m */,
 			);
 			path = "Soundcloud Uploader";
-			sourceTree = "<group>";
-		};
-		DD9CF6551C109C1000B41FBB /* Facebook */ = {
-			isa = PBXGroup;
-			children = (
-				DD9CF6561C109C1000B41FBB /* AccessTokenStorage.cpp */,
-				DD9CF6571C109C1000B41FBB /* AccessTokenStorage.h */,
-				DD9CF6581C109C1000B41FBB /* Data.h */,
-				DD9CF6591C109C1000B41FBB /* FacebookException.h */,
-				DD9CF65A1C109C1000B41FBB /* ImageCache.cpp */,
-				DD9CF65B1C109C1000B41FBB /* ImageCache.h */,
-				DD9CF65C1C109C1000B41FBB /* Notifications.cpp */,
-				DD9CF65D1C109C1000B41FBB /* Notifications.h */,
-				DD9CF65E1C109C1000B41FBB /* Parser.cpp */,
-				DD9CF65F1C109C1000B41FBB /* Parser.h */,
-				DD9CF6601C109C1000B41FBB /* Request.cpp */,
-				DD9CF6611C109C1000B41FBB /* Request.h */,
-				DD9CF6621C109C1000B41FBB /* User.h */,
-			);
-			path = Facebook;
 			sourceTree = "<group>";
 		};
 		DD9CF6681C109C1000B41FBB /* Soundcloud UploaderTests */ = {
@@ -168,6 +141,21 @@
 				DD9D2C411BD53C9600DC30A6 /* WebKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		DD9CF67B1C10A48C00B41FBB /* Soundcloud */ = {
+			isa = PBXGroup;
+			children = (
+				DD9CF67C1C10A48C00B41FBB /* AccessTokenStorage.cpp */,
+				DD9CF67D1C10A48C00B41FBB /* AccessTokenStorage.h */,
+				DD9CF67E1C10A48C00B41FBB /* Data.h */,
+				DD9CF67F1C10A48C00B41FBB /* Exception.h */,
+				DD9CF6841C10A48C00B41FBB /* Parser.cpp */,
+				DD9CF6851C10A48C00B41FBB /* Parser.h */,
+				DD9CF6861C10A48C00B41FBB /* Request.cpp */,
+				DD9CF6871C10A48C00B41FBB /* Request.h */,
+			);
+			path = Soundcloud;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,15 +260,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				DD9CF6771C109C1000B41FBB /* Facebook_NotificationsTests.m in Sources */,
+				DD9CF68D1C10A48C00B41FBB /* Request.cpp in Sources */,
 				DD9CF66B1C109C1000B41FBB /* AppDelegate.mm in Sources */,
 				DD9CF66C1C109C1000B41FBB /* AppDelegateBridge.mm in Sources */,
-				DD9CF6721C109C1000B41FBB /* Request.cpp in Sources */,
-				DD9CF66F1C109C1000B41FBB /* ImageCache.cpp in Sources */,
-				DD9CF66E1C109C1000B41FBB /* AccessTokenStorage.cpp in Sources */,
-				DD9CF6711C109C1000B41FBB /* Parser.cpp in Sources */,
+				DD9CF68C1C10A48C00B41FBB /* Parser.cpp in Sources */,
 				DD9CF6751C109C1000B41FBB /* Main.cpp in Sources */,
 				DD9CF6761C109C1000B41FBB /* main.m in Sources */,
-				DD9CF6701C109C1000B41FBB /* Notifications.cpp in Sources */,
+				DD9CF6891C10A48C00B41FBB /* AccessTokenStorage.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

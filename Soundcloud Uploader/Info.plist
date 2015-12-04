@@ -32,7 +32,14 @@
 	<string>NSApplication</string>
 	<key>LSUIElement</key>
 	<true/>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>LSBackgroundOnly</key>
 	<true/>
+	<key>NSUserNotificationAlertStyle</key>
+	<string>banner</string>
 </dict>
 </plist>

@@ -17,8 +17,9 @@
 #include <regex>
 #include <mutex>
 #include "Request.h"
+#include "Parser.h"
 #include "Data.h"
-#include "FacebookException.h"
+#include "Exception.h"
 
 class AccessTokenStorage
 {
@@ -26,16 +27,18 @@ private:
     static AccessTokenStorage *self;
     std::string storageFile;
     static std::mutex mutex;
+    Parser parser;
     
     AccessTokenStorage();
+    void store(std::string);
+    std::string read();
     
 public:
     ~AccessTokenStorage();
     static AccessTokenStorage *getInstance();
-    void store(std::string);
-    std::string read();
-    std::string getCodeFromUrl(std::string) throw(FacebookLoginException *);
-    std::string getAccessTokenFromCode(std::string) throw(FacebookLoginException *);
+    std::string storeAccessTokenFromCode(std::string) throw(SoundcloudDefaultException);
+    std::string getCodeFromUrl(std::string) throw(SoundcloudDefaultException);
+    std::string readAccessToken() throw(SoundcloudDefaultException);
 };
 
 #endif /* defined(__Facebook_Notifications__AccessTokenStorage__) */

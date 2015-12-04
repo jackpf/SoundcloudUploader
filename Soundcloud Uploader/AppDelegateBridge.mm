@@ -10,18 +10,9 @@
 
 @implementation AppDelegateBridgeNative
 
-- (void) markNotificationReadThread :(NSString *) identifier
-{
-    std::string str = [identifier UTF8String];
-    self.bridge->event("markNotificationRead", &str);
-}
-
 - (void) userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
 {
-    [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:[self.notificationPaths objectForKey:notification.identifier]]];
-    [self performSelectorInBackground:@selector(markNotificationReadThread:) withObject:notification.identifier];
-    [NSUserNotificationCenter.defaultUserNotificationCenter removeDeliveredNotification:notification];
-    [self updateNotificationCount:self.notificationCount - 1];
+    
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
@@ -51,7 +42,7 @@
 {
     [self.window setIsVisible:TRUE];
     
-    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%s?client_id=%s&redirect_uri=%s&scope=%s&display=popup", FB_OAUTH_URL, CLIENT_ID, REDIRECT_URI, FB_PERMISSIONS]];
+    NSURL *url = [NSURL URLWithString:[NSString stringWithFormat:@"%s?client_id=%s&redirect_uri=%s&scope=%s&display=popup&response_type=%s", OAUTH_URL, CLIENT_ID, REDIRECT_URI, SCOPE, RESPONSE_TYPE]];
     
     NSHTTPCookieStorage *storage = [NSHTTPCookieStorage sharedHTTPCookieStorage];
     for (NSHTTPCookie *cookie in [storage cookies]) {
@@ -83,19 +74,20 @@
         [[NSUserNotificationCenter defaultUserNotificationCenter] setDelegate:self];
         
         self.statusBar = [[NSStatusBar systemStatusBar] statusItemWithLength:NSSquareStatusItemLength];
-        self.statusBar.image = [NSImage imageNamed:@"notification_light"];
-        self.statusBar.alternateImage =[NSImage imageNamed:@"notification_alt"];
+        self.statusBar.image = [NSImage imageNamed:@"StatusBarIcon"];
+        self.statusBar.alternateImage =[NSImage imageNamed:@"StatusBarIcon"];
+        self.statusBar.toolTip = @"No uploads in progress";
         self.statusBar.highlightMode = YES;
         
         self.menuZone = [NSMenu menuZone];
         self.menu = [[NSMenu allocWithZone:self.menuZone] init];
         [self.menu setAutoenablesItems:NO];
         
-        self.markNotificationsReadMenuItem = [self.menu addItemWithTitle:@"Mark all as read"
-                                                                  action:@selector(markNotificationsRead)
-                                                           keyEquivalent:@""];
-        self.markNotificationsReadMenuItem.enabled = false;
-        [self.markNotificationsReadMenuItem setTarget:self];
+        self.uploadMenuItem = [self.menu addItemWithTitle:@"Upload"
+                                                           action:@selector(upload)
+                                                    keyEquivalent:@""];
+        self.uploadMenuItem.enabled = true;
+        [self.uploadMenuItem setTarget:self];
         
         [self.menu addItem:[NSMenuItem separatorItem]];
         
@@ -111,9 +103,32 @@
         [self.exitMenuItem setTarget:self];
         
         self.statusBar.menu = self.menu;
+        
     }
     
     return self;
+}
+
+- (void) upload
+{
+    NSOpenPanel *openDlg = [NSOpenPanel openPanel];
+    [openDlg setCanChooseFiles:YES];
+    [openDlg setCanChooseDirectories:NO];
+    [openDlg setAllowsMultipleSelection:NO];
+    
+    if ([openDlg runModalForDirectory:nil file:nil] == NSOKButton) {
+        NSArray* files = [openDlg filenames];
+        
+        for(int i = 0; i < [files count]; i++) {
+            [self performSelectorInBackground:@selector(uploadThread:) withObject:[files objectAtIndex:i]];
+        }
+    }
+}
+
+- (void) uploadThread :(NSString *) filename
+{
+    std::string filenameStr = [filename UTF8String];
+    self.bridge->event("upload", &filenameStr);
 }
 
 - (void) reauthenticateThread
@@ -126,21 +141,6 @@
     [self performSelectorInBackground:@selector(reauthenticateThread) withObject:nil];
 }
 
-- (void) updateNotificationCount :(unsigned long) count
-{
-    self.notificationCount = count;
-    
-    if (count > 0) {
-        self.statusBar.image = [NSImage imageNamed:@"notification_dark"];
-        self.markNotificationsReadMenuItem.enabled = YES;
-    } else {
-        self.statusBar.image = [NSImage imageNamed:@"notification_light"];
-        self.markNotificationsReadMenuItem.enabled = NO;
-    }
-    
-    self.statusBar.toolTip = [NSString stringWithFormat:@"%lu notifications", count];
-}
-
 - (void) notify :(NSString *) identifier :(NSString *) title :(NSString *) body :(NSString *) path :(NSString *) image;
 {
     [self.notificationPaths setObject:path forKey:identifier];
@@ -151,15 +151,6 @@
     notification.informativeText = body;
     notification.contentImage = [[NSImage alloc] initWithContentsOfFile:image];
     [NSUserNotificationCenter.defaultUserNotificationCenter deliverNotification:notification];
-}
-
-- (void) clearNotifications :(NSArray *)notificationIds
-{
-    for(NSUserNotification *notification in NSUserNotificationCenter.defaultUserNotificationCenter.deliveredNotifications) {
-        if ([notificationIds containsObject:notification.identifier]) {
-            [NSUserNotificationCenter.defaultUserNotificationCenter removeDeliveredNotification:notification];
-        }
-    }
 }
 
 - (void) getInput :(NSString *) prompt :(NSString **) r
@@ -194,15 +185,15 @@
     [alert runModal];
 }
 
-- (void) markNotificationsReadThread
+- (void) updateUploadProgress :(NSInteger) status
 {
-    [NSUserNotificationCenter.defaultUserNotificationCenter removeAllDeliveredNotifications];
-    self.bridge->event("markNotificationsRead");
-}
-
-- (void) markNotificationsRead
-{
-    [self performSelectorInBackground:@selector(markNotificationsReadThread) withObject:nil];
+    NSString *statusText = [NSString stringWithFormat: @"Upload progress: %d%%", status];
+    [self.statusBar setToolTip:statusText];
+    
+    if (status == 100) {
+        [self notify:@"UPLOAD_PROGRESS" :@"Upload Complete" :@"Upload complete" :@"" :@""];
+        [self.statusBar setToolTip:@"No uploads in progress"];
+    }
 }
 
 - (void) exit
@@ -220,25 +211,6 @@ void AppDelegateBridge::setBridge(AppDelegateBridgeNative *bridge)
 void AppDelegateBridge::notify(std::string identifier, std::string title, std::string body, std::string path, std::string image)
 {
     [bridge notify:[NSString stringWithUTF8String:identifier.c_str()] :[NSString stringWithUTF8String:title.c_str()] :[NSString stringWithUTF8String:body.c_str()] :[NSString stringWithUTF8String:path.c_str()] :[NSString stringWithUTF8String:image.c_str()]];
-}
-
-void AppDelegateBridge::updateNotificationCount(size_t count)
-{
-    [bridge updateNotificationCount:count];
-}
-
-void AppDelegateBridge::clearNotifications(Notifications notifications)
-{
-    
-    NSMutableArray *notificationIds = [[NSMutableArray alloc] init];
-    
-    int i = 0;
-    for(Notifications::iterator it = notifications.begin(); it != notifications.end(); ++it) {
-        notificationIds[i] = [NSString stringWithUTF8String:static_cast<Notification>(*it).id.c_str()];
-        i++;
-    }
-    
-    [bridge clearNotifications:notificationIds];
 }
 
 std::string AppDelegateBridge::getInput(std::string prompt)
@@ -271,6 +243,11 @@ std::string AppDelegateBridge::retrieveAuthenticationCode()
 void AppDelegateBridge::alert(std::string prompt)
 {
     [bridge performSelectorOnMainThread:@selector(alert:) withObject:[NSString stringWithUTF8String:prompt.c_str()] waitUntilDone:NO];
+}
+
+void AppDelegateBridge::updateUploadProgress(int status)
+{
+    [bridge updateUploadProgress :(NSInteger)status];
 }
 
 void AppDelegateBridge::addEvent(std::string eventName, EventCallback *callback)

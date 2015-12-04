@@ -14,9 +14,8 @@
 #include <mutex>
 #include "AppDelegateBridge.h"
 #include "Parser.h"
-#include "ImageCache.h"
 #include "AccessTokenStorage.h"
-#include "FacebookException.h"
+#include "Exception.h"
 #include <unordered_map>
 
 #define INITIAL_UPDATE_TIME 1
@@ -27,24 +26,14 @@ class Main
 private:
     static AppDelegateBridge *bridge;
     static Request *request;
-    static Parser *parser;
-    static ImageCache *cache;
     static AccessTokenStorage *tokenStorage;
-    static Notifications notifications;
-    static std::string accessToken;
-    static User user;
-    static std::unordered_map<std::string, std::time_t> readMessages;
-    static std::chrono::minutes updateTime;
-    static std::mutex updateMutex;
     
     Main();
-    static std::chrono::minutes nextUpdateTime(const Notifications);
+    static void progressMonitor();
     
 public:
     static int main(AppDelegateBridge *);
-    static void markNotificationRead(void *);
-    static void markNotificationsRead(void *);
-    static void reauthenticate(void *);
+    static void uploadEvent(void *data);
 };
 
 #endif

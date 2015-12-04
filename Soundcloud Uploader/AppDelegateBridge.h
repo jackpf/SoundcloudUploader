@@ -16,7 +16,6 @@
 #include <thread>
 #import <WebKit/WebKit.h>
 #include "Data.h"
-#include "Notifications.h"
 
 class AppDelegateBridge;
 
@@ -26,7 +25,7 @@ class AppDelegateBridge;
 @property (strong, nonatomic) NSStatusItem *statusBar;
 @property (nonatomic) NSZone *menuZone;
 @property (strong, nonatomic) NSMenu *menu;
-@property (strong, nonatomic) NSMenuItem *markNotificationsReadMenuItem, *reauthenticateMenuItem, *exitMenuItem;
+@property (strong, nonatomic) NSMenuItem *uploadMenuItem, *reauthenticateMenuItem, *exitMenuItem;
 @property (strong, nonatomic) NSMutableDictionary *notificationPaths;
 @property unsigned long notificationCount;
 @property (assign) IBOutlet NSWindow *window;
@@ -37,12 +36,10 @@ class AppDelegateBridge;
 - (AppDelegateBridgeNative *) initWithWindow :(NSWindow *)window :(WebView *)webView;
 - (void) promptAuthenticationCode;
 - (NSString *) consumeAuthenticationCode;
-- (void) updateNotificationCount :(unsigned long)count;
 - (void) notify :(NSString *)identifier :(NSString *)title :(NSString *)body :(NSString *) path :(NSString *)image;
 - (void) getInput :(NSString *)prompt :(NSString **) r;
 - (void) alert :(NSString *)prompt;
-- (void) markNotificationsRead;
-- (void) clearNotifications :(NSArray *)notificationIds;
+- (void) updateUploadStatus :(NSInteger)status;
 - (void) exit;
 
 @end
@@ -57,12 +54,11 @@ public:
     std::unordered_map<std::string, EventCallback *> callbacks;
     
     void setBridge(AppDelegateBridgeNative *);
-    void updateNotificationCount(size_t);
     void notify(std::string, std::string, std::string, std::string, std::string = "");
-    void clearNotifications(Notifications);
     std::string getInput(std::string);
     void alert(std::string);
     std::string retrieveAuthenticationCode();
+    void updateUploadProgress(int);
     
     void addEvent(std::string, EventCallback);
     void removeEvent(std::string);

@@ -16,6 +16,11 @@
 #include <vector>
 #include "curlcpp/curl_easy.h"
 #include "Data.h"
+#include <stdio.h>
+#include <stdlib.h>
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 
 class Request
 {
@@ -30,7 +35,9 @@ public:
     
     ~Request();
     static Request *getInstance();
-    void request(const std::string, Params, bool, std::ostream *) throw(std::runtime_error);
+    void request(const std::string, Params, Params, Params, std::ostream *, int *) throw(std::runtime_error);
+    void request(const std::string, Params, Params, Params, std::ostream *) throw(std::runtime_error);
+    void request(const std::string, Params, Params, std::ostream *) throw(std::runtime_error);
     void request(const std::string, std::ostream *) throw(std::runtime_error);
     void request(const std::string, Params, std::ostream *) throw(std::runtime_error);
 };
