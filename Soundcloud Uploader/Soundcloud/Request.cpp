@@ -22,13 +22,6 @@ static size_t write_callback(char *ptr, size_t size, size_t nmemb, std::ostream 
     return len;
 }
 
-static size_t progress_callback(int *ptr, double dltotal, double dlnow, double ultotal, double ulnow)
-{
-    *ptr = (int) (ulnow / ultotal * 100);
-    
-    return 0;
-}
-
 Request::Request()
 {
     
@@ -50,7 +43,7 @@ Request::~Request()
     }
 }
 
-void Request::request(const std::string path, Params getParams, Params postParams, Params files, std::ostream *response, int *progress) throw(std::runtime_error)
+void Request::request(const std::string path, Params getParams, Params postParams, Params files, std::ostream *response, size_t (*progressFuncPtr)(void *, double, double, double, double), void *progressDataPtr) throw(std::runtime_error)
 {
     CURL *ch;
     CURLcode res;
@@ -115,8 +108,8 @@ void Request::request(const std::string path, Params getParams, Params postParam
     curl_easy_setopt(ch, CURLOPT_FOLLOWLOCATION, 1);
     curl_easy_setopt(ch, CURLOPT_HTTPPOST, postData);
     curl_easy_setopt(ch, CURLOPT_NOPROGRESS, false);
-    curl_easy_setopt(ch, CURLOPT_PROGRESSDATA, progress);
-    curl_easy_setopt(ch, CURLOPT_PROGRESSFUNCTION, progress_callback);
+    curl_easy_setopt(ch, CURLOPT_PROGRESSDATA, progressDataPtr);
+    curl_easy_setopt(ch, CURLOPT_PROGRESSFUNCTION, progressFuncPtr);
     
     if ((res = curl_easy_perform(ch)) != CURLE_OK) {
         throw std::runtime_error("Request: " + std::string(strerror(res)));
@@ -128,20 +121,20 @@ void Request::request(const std::string path, Params getParams, Params postParam
 
 void Request::request(const std::string path, Params getParams, Params postParams, Params files, std::ostream *response) throw(std::runtime_error)
 {
-    request(path, getParams, postParams, files, response, nullptr);
+    request(path, getParams, postParams, files, response, nullptr, nullptr);
 }
 
 void Request::request(const std::string path, Params getParams, Params postParams, std::ostream *response) throw(std::runtime_error)
 {
-    request(path, getParams, postParams, Params(), response, nullptr);
+    request(path, getParams, postParams, Params(), response, nullptr, nullptr);
 }
 
 void Request::request(const std::string path, std::ostream *response) throw(std::runtime_error)
 {
-    request(path, Params(), Params(), Params(), response, nullptr);
+    request(path, Params(), Params(), Params(), response, nullptr, nullptr);
 }
 
 void Request::request(const std::string path, Params getParams, std::ostream *response) throw(std::runtime_error)
 {
-    request(path, getParams, Params(), Params(), response, nullptr);
+    request(path, getParams, Params(), Params(), response, nullptr, nullptr);
 }

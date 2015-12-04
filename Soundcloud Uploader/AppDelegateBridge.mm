@@ -185,12 +185,12 @@
     [alert runModal];
 }
 
-- (void) updateUploadProgress :(NSInteger) status
+- (void) updateUploadProgress :(NSInteger) progress :(NSInteger) count
 {
-    NSString *statusText = [NSString stringWithFormat: @"Upload progress: %d%%", status];
+    NSString *statusText = [NSString stringWithFormat: @"%d uploads: %d%%", count, progress];
     [self.statusBar setToolTip:statusText];
     
-    if (status == 100) {
+    if (progress == 100) {
         [self notify:@"UPLOAD_PROGRESS" :@"Upload Complete" :@"Upload complete" :@"" :@""];
         [self.statusBar setToolTip:@"No uploads in progress"];
     }
@@ -245,9 +245,9 @@ void AppDelegateBridge::alert(std::string prompt)
     [bridge performSelectorOnMainThread:@selector(alert:) withObject:[NSString stringWithUTF8String:prompt.c_str()] waitUntilDone:NO];
 }
 
-void AppDelegateBridge::updateUploadProgress(int status)
+void AppDelegateBridge::updateUploadProgress(int progress, int count)
 {
-    [bridge updateUploadProgress :(NSInteger)status];
+    [bridge updateUploadProgress :(NSInteger)progress :(NSInteger)count];
 }
 
 void AppDelegateBridge::addEvent(std::string eventName, EventCallback *callback)

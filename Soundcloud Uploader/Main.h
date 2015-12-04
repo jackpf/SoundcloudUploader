@@ -17,6 +17,7 @@
 #include "AccessTokenStorage.h"
 #include "Exception.h"
 #include <unordered_map>
+#include "Upload.h"
 
 #define INITIAL_UPDATE_TIME 1
 #define MAX_UPDATE_TIME     5

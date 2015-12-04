@@ -35,7 +35,7 @@ public:
     
     ~Request();
     static Request *getInstance();
-    void request(const std::string, Params, Params, Params, std::ostream *, int *) throw(std::runtime_error);
+    void request(const std::string, Params, Params, Params, std::ostream *, size_t (*progressFuncPtr)(void *, double, double, double, double), void *) throw(std::runtime_error);
     void request(const std::string, Params, Params, Params, std::ostream *) throw(std::runtime_error);
     void request(const std::string, Params, Params, std::ostream *) throw(std::runtime_error);
     void request(const std::string, std::ostream *) throw(std::runtime_error);

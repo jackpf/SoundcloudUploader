@@ -58,7 +58,7 @@ public:
     std::string getInput(std::string);
     void alert(std::string);
     std::string retrieveAuthenticationCode();
-    void updateUploadProgress(int);
+    void updateUploadProgress(int, int);
     
     void addEvent(std::string, EventCallback);
     void removeEvent(std::string);

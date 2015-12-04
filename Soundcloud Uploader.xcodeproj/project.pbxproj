@@ -34,6 +34,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DD0E3B721C11FE9700621FC2 /* Upload.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Upload.h; sourceTree = "<group>"; };
 		DD3661991BC7AEB00000D2ED /* Soundcloud Uploader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Soundcloud Uploader.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3661AC1BC7AEB00000D2ED /* Soundcloud Uploader.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Soundcloud Uploader.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DD3661CC1BC7B8F40000D2ED /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
@@ -154,6 +155,7 @@
 				DD9CF6851C10A48C00B41FBB /* Parser.h */,
 				DD9CF6861C10A48C00B41FBB /* Request.cpp */,
 				DD9CF6871C10A48C00B41FBB /* Request.h */,
+				DD0E3B721C11FE9700621FC2 /* Upload.h */,
 			);
 			path = Soundcloud;
 			sourceTree = "<group>";
