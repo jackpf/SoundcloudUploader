@@ -66,7 +66,7 @@ std::string AccessTokenStorage::getCodeFromUrl(std::string url) throw(Soundcloud
     std::smatch codeMatch;
     
     if (!std::regex_search(url, codeMatch, codeRgx) || codeMatch.length() < 1) {
-        throw new SoundcloudDefaultException("Unable to extract code");
+        throw SoundcloudDefaultException("Unable to extract code");
     }
     
     std::cout << "Code: " << codeMatch[1] << std::endl;

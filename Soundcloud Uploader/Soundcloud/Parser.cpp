@@ -25,10 +25,16 @@ void Parser::parseJson(std::stringstream *json, boost::property_tree::ptree *pt)
     }
 }
 
-void Parser::parseAccessToken(std::stringstream *json, std::string *accessToken) throw (boost::property_tree::json_parser::json_parser_error)
+void Parser::parseAccessToken(std::stringstream *json, std::string *accessToken) throw (SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error)
 {
     boost::property_tree::ptree pt;
     parseJson(json, &pt);
     
     *accessToken = pt.get_child("access_token").data();
+}
+
+void Parser::parseResponse(std::stringstream *json, std::string *response) throw (SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error)
+{
+    boost::property_tree::ptree pt;
+    parseJson(json, &pt);
 }

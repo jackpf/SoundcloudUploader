@@ -12,7 +12,7 @@
 #define API_URL         "https://api.soundcloud.com"
 #define CLIENT_ID       "5e0085f480c991ff05085a3492d79513"
 #define CLIENT_SECRET   "8cea7f961900a0c2452e3305e7575d0d"
-#define REDIRECT_URI    "https://soundcloud.com/connected"
+#define REDIRECT_URI    "https://developers.soundcloud.com/callback.html"
 #define OAUTH_URL       "https://soundcloud.com/connect"
 #define TOKEN_PATH      "/oauth2/token"
 #define SCOPE           ""

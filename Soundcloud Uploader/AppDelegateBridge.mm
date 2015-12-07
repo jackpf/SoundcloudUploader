@@ -10,6 +10,11 @@
 
 @implementation AppDelegateBridgeNative
 
+- (BOOL)userNotificationCenter:(NSUserNotificationCenter *)center shouldPresentNotification:(NSUserNotification *)notification
+{
+    return YES;
+}
+
 - (void) userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
 {
     
@@ -83,9 +88,15 @@
         self.menu = [[NSMenu allocWithZone:self.menuZone] init];
         [self.menu setAutoenablesItems:NO];
         
+        self.progressMenuItem = [self.menu addItemWithTitle:@"No uploads in progress"
+                                                     action:@selector(cancelUploads)
+                                            keyEquivalent:@""];
+        self.progressMenuItem.enabled = false;
+        [self.progressMenuItem setTarget:self];
+        
         self.uploadMenuItem = [self.menu addItemWithTitle:@"Upload"
-                                                           action:@selector(upload)
-                                                    keyEquivalent:@""];
+                                                   action:@selector(upload)
+                                            keyEquivalent:@""];
         self.uploadMenuItem.enabled = true;
         [self.uploadMenuItem setTarget:self];
         
@@ -103,7 +114,6 @@
         [self.exitMenuItem setTarget:self];
         
         self.statusBar.menu = self.menu;
-        
     }
     
     return self;
@@ -134,6 +144,16 @@
 - (void) reauthenticateThread
 {
     self.bridge->event("reauthenticate");
+}
+
+- (void) cancelUploads
+{
+    [self performSelectorInBackground:@selector(cancelUploadsThread) withObject:nil];
+}
+
+- (void) cancelUploadsThread
+{
+    self.bridge->event("cancel_uploads");
 }
 
 - (void) reauthenticate
@@ -187,12 +207,24 @@
 
 - (void) updateUploadProgress :(NSInteger) progress :(NSInteger) count
 {
-    NSString *statusText = [NSString stringWithFormat: @"%d uploads: %d%%", count, progress];
+    static bool hasSetMenuText = false;
+    
+    NSString *statusText = [NSString stringWithFormat: @"%d uploads: %d%%", count, progress],
+    *menuText = [NSString stringWithFormat: @"Cancel %d upload%s", count, count > 1 ? "s" : ""];
     [self.statusBar setToolTip:statusText];
+    
+    if (!hasSetMenuText) {
+        [self.progressMenuItem setTitle:menuText];
+        [self.progressMenuItem setEnabled:YES];
+        hasSetMenuText = true;
+    }
     
     if (progress == 100) {
         [self notify:@"UPLOAD_PROGRESS" :@"Upload Complete" :@"Upload complete" :@"" :@""];
         [self.statusBar setToolTip:@"No uploads in progress"];
+        [self.progressMenuItem setTitle:@"No uploads in progress"];
+        [self.progressMenuItem setEnabled:NO];
+        hasSetMenuText = false;
     }
 }
 

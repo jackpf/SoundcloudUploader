@@ -28,13 +28,17 @@ private:
     static AppDelegateBridge *bridge;
     static Request *request;
     static AccessTokenStorage *tokenStorage;
+    static Parser *parser;
     
     Main();
     static void progressMonitor();
     
 public:
     static int main(AppDelegateBridge *);
+    
     static void uploadEvent(void *data);
+    static void reauthenticateEvent(void *data);
+    static void cancelUploadsEvent(void *data);
 };
 
 #endif

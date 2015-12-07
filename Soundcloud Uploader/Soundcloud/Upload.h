@@ -14,6 +14,8 @@ typedef struct {
     std::string path;
     size_t progress = 0;
     std::string url;
+    std::thread thread;
+    bool cancelRequest = false;
 } Upload;
 
 #endif

@@ -26,7 +26,8 @@ private:
     void parseJson(std::stringstream *, boost::property_tree::ptree *) throw(SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error);
     
 public:
-    void parseAccessToken(std::stringstream *, std::string *) throw(boost::property_tree::json_parser::json_parser_error);
+    void parseAccessToken(std::stringstream *, std::string *) throw(SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error);
+    void parseResponse(std::stringstream *, std::string *) throw(SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error);
 };
 
 #endif /* defined(__Facebook_Notifications__Parser__) */

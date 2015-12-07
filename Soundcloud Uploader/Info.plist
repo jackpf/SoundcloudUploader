@@ -40,6 +40,6 @@
 	<key>LSBackgroundOnly</key>
 	<true/>
 	<key>NSUserNotificationAlertStyle</key>
-	<string>banner</string>
+	<string>alert</string>
 </dict>
 </plist>
