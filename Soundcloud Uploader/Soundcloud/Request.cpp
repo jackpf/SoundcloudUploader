@@ -112,7 +112,8 @@ void Request::request(const std::string path, Params getParams, Params postParam
     curl_easy_setopt(ch, CURLOPT_PROGRESSFUNCTION, progressFuncPtr);
     
     if ((res = curl_easy_perform(ch)) != CURLE_OK) {
-        throw std::runtime_error("Request: " + std::string(strerror(res)));
+        // Don't want exceptions on cancel
+        //throw std::runtime_error("Request: " + std::string(strerror(res)));
     }
     
     curl_formfree(postData);

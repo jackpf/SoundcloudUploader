@@ -14,19 +14,25 @@ AccessTokenStorage                              *Main::tokenStorage     = Access
 Parser                                          *Main::parser           = new Parser();
 
 static vector<Upload *> uploads;
+bool isMonitoringProgress = false;
+static std::thread *progressThread;
 
 static size_t progress_callback(void *data, double dltotal, double dlnow, double ultotal, double ulnow)
 {
     Upload *upload = static_cast<Upload *>(data);
-    upload->progress = ceil(ulnow / ultotal * 100.0);
     
-    std::cout << "Raw progress: " << upload->progress << std::endl;
+    if (ultotal > 0) {
+        upload->progress = ceil(ulnow / ultotal * 100.0);
+    }
     
-    return 0;
+    std::cout << "Raw progress: " << upload->progress << "(" << ulnow << " / " << ultotal << ")" << std::endl;
+    
+    return !upload->cancelRequest ? 0 : 1;
 }
 
 void Main::progressMonitor()
 {
+    isMonitoringProgress = true;
     size_t progress = 0;
     
     do {
@@ -43,7 +49,11 @@ void Main::progressMonitor()
     
         bridge->updateUploadProgress(progress, uploads.size());
         std::this_thread::sleep_for(std::chrono::seconds(1));
-    } while (progress < 100);
+    } while (progress < 100 && uploads.size() > 0);
+    
+    isMonitoringProgress = false;
+    
+    bridge->updateUploadProgress(0, 0);
 }
 
 int Main::main(AppDelegateBridge *bridge)
@@ -68,11 +78,13 @@ void Main::uploadEvent(void *data)
     upload.name = boost::filesystem::basename(upload.path);
     uploads.push_back(&upload);
     
+    if (!isMonitoringProgress) {
+        progressThread = new std::thread(progressMonitor);
+    }
+    
     try {
         std::string accessToken = tokenStorage->readAccessToken();
         std::stringstream buf;
-        
-        upload.thread = std::thread(progressMonitor);
         
         request->request(
             "/tracks",
@@ -91,22 +103,26 @@ void Main::uploadEvent(void *data)
         
         std::cout << "Response: " << buf.str() << std::endl;
         
-        try {
-            parser->parseResponse(&buf, nullptr);
-        } catch (SoundcloudDefaultException e) {
-            std::cout << "Soundcloud error: " << e.what() << std::endl;
-            bridge->alert(std::string("Soundcloud error: ") + e.what());
+        if (!upload.cancelRequest) {
+            try {
+                parser->parseResponse(&buf, &upload);
+                bridge->notify(upload.data["id"], "Upload complete", upload.name + " has been successfully uploaded.",  upload.data["permalink_url"]);
+            } catch (SoundcloudDefaultException e) {
+                std::cout << "Soundcloud error: " << e.what() << std::endl;
+                bridge->alert(std::string("Soundcloud error: ") + e.what());
+            }
         }
     } catch (std::runtime_error e) {
         std::cout << "Runtime error: " << e.what() << std::endl;
         bridge->alert(std::string("Runtime error: ") + e.what());
     }
     
-    // Just make sure we've definitely finished
-    upload.progress = 100;
-    upload.thread.join();
-    
     uploads.erase(std::remove(uploads.begin(), uploads.end(), &upload), uploads.end());
+    
+    if (uploads.size() == 0 && progressThread != nullptr) {
+        progressThread->join();
+        delete progressThread;
+    }
 }
 
 void Main::reauthenticateEvent(void *data)
@@ -125,8 +141,5 @@ void Main::cancelUploadsEvent(void *data)
 {
     for (int i = 0; i < uploads.size(); i++) {
         uploads[i]->cancelRequest = true;
-    }
-    for (int i = 0; i < uploads.size(); i++) {
-        uploads[i]->thread.join();
     }
 }

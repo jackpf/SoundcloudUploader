@@ -17,7 +17,11 @@
 
 - (void) userNotificationCenter:(NSUserNotificationCenter *)center didActivateNotification:(NSUserNotification *)notification
 {
-    
+    NSString *url = [self.notificationPaths objectForKey:notification.identifier];
+    if ([url length] > 0) {
+        [[NSWorkspace sharedWorkspace] openURL: [NSURL URLWithString:url]];
+    }
+    [NSUserNotificationCenter.defaultUserNotificationCenter removeDeliveredNotification:notification];
 }
 
 - (void)webView:(WebView *)sender didFinishLoadForFrame:(WebFrame *)frame
@@ -124,7 +128,7 @@
     NSOpenPanel *openDlg = [NSOpenPanel openPanel];
     [openDlg setCanChooseFiles:YES];
     [openDlg setCanChooseDirectories:NO];
-    [openDlg setAllowsMultipleSelection:NO];
+    [openDlg setAllowsMultipleSelection:YES];
     
     if ([openDlg runModalForDirectory:nil file:nil] == NSOKButton) {
         NSArray* files = [openDlg filenames];
@@ -161,7 +165,7 @@
     [self performSelectorInBackground:@selector(reauthenticateThread) withObject:nil];
 }
 
-- (void) notify :(NSString *) identifier :(NSString *) title :(NSString *) body :(NSString *) path :(NSString *) image;
+- (NSUserNotification *) notify :(NSString *) identifier :(NSString *) title :(NSString *) body :(NSString *) path :(NSString *) image;
 {
     [self.notificationPaths setObject:path forKey:identifier];
     
@@ -171,6 +175,8 @@
     notification.informativeText = body;
     notification.contentImage = [[NSImage alloc] initWithContentsOfFile:image];
     [NSUserNotificationCenter.defaultUserNotificationCenter deliverNotification:notification];
+    
+    return notification;
 }
 
 - (void) getInput :(NSString *) prompt :(NSString **) r
@@ -208,9 +214,10 @@
 - (void) updateUploadProgress :(NSInteger) progress :(NSInteger) count
 {
     static bool hasSetMenuText = false;
+    static NSUserNotification *notification;
     
-    NSString *statusText = [NSString stringWithFormat: @"%d uploads: %d%%", count, progress],
-    *menuText = [NSString stringWithFormat: @"Cancel %d upload%s", count, count > 1 ? "s" : ""];
+    NSString *statusText = [NSString stringWithFormat: @"%d upload%s: %d%%", count, count > 1 ? "s" : "", progress],
+    *menuText = @"Cancel uploads";//[NSString stringWithFormat: @"Cancel %d upload%s", count, count > 1 ? "s" : ""];
     [self.statusBar setToolTip:statusText];
     
     if (!hasSetMenuText) {
@@ -219,11 +226,13 @@
         hasSetMenuText = true;
     }
     
-    if (progress == 100) {
-        [self notify:@"UPLOAD_PROGRESS" :@"Upload Complete" :@"Upload complete" :@"" :@""];
+    if (progress < 100 && count > 0) {
+        notification = [self notify:@"upload" :@"Uploading..." :statusText :@"" :@""];
+    } else {
         [self.statusBar setToolTip:@"No uploads in progress"];
         [self.progressMenuItem setTitle:@"No uploads in progress"];
         [self.progressMenuItem setEnabled:NO];
+        [NSUserNotificationCenter.defaultUserNotificationCenter removeDeliveredNotification:notification];
         hasSetMenuText = false;
     }
 }

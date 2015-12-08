@@ -33,8 +33,12 @@ void Parser::parseAccessToken(std::stringstream *json, std::string *accessToken)
     *accessToken = pt.get_child("access_token").data();
 }
 
-void Parser::parseResponse(std::stringstream *json, std::string *response) throw (SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error)
+void Parser::parseResponse(std::stringstream *json, Upload *upload) throw (SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error)
 {
     boost::property_tree::ptree pt;
     parseJson(json, &pt);
+    
+    BOOST_FOREACH(boost::property_tree::ptree::value_type &v, pt) {
+        upload->data[v.first.data()] = v.second.data();
+    }
 }
