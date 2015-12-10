@@ -26,9 +26,6 @@ class Main
 {
 private:
     static AppDelegateBridge *bridge;
-    static Request *request;
-    static AccessTokenStorage *tokenStorage;
-    static Parser *parser;
     
     Main();
     static void progressMonitor();

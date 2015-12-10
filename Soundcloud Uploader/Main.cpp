@@ -9,9 +9,6 @@
 #include "Main.h"
 
 AppDelegateBridge                               *Main::bridge;
-Request                                         *Main::request          = Request::getInstance();
-AccessTokenStorage                              *Main::tokenStorage     = AccessTokenStorage::getInstance();
-Parser                                          *Main::parser           = new Parser();
 
 static vector<Upload *> uploads;
 bool isMonitoringProgress = false;
@@ -63,9 +60,14 @@ int Main::main(AppDelegateBridge *bridge)
     bridge->addEvent("reauthenticate", reauthenticateEvent);
     bridge->addEvent("cancel_uploads", cancelUploadsEvent);
     
-    if (tokenStorage->readAccessToken().length() == 0) {
-        std::string code = tokenStorage->getCodeFromUrl(bridge->retrieveAuthenticationCode());
-        tokenStorage->storeAccessTokenFromCode(code);
+    try {
+        if (AccessTokenStorage::getInstance()->readAccessToken().length() == 0) {
+            std::string code = AccessTokenStorage::getInstance()->getCodeFromUrl(bridge->retrieveAuthenticationCode());
+            AccessTokenStorage::getInstance()->storeAccessTokenFromCode(code);
+        }
+    } catch (std::runtime_error e) {
+        std::cout << "Runtime error: " << e.what() << std::endl;
+        bridge->alert(std::string("Runtime error: ") + e.what());
     }
     
     return 0;
@@ -83,10 +85,10 @@ void Main::uploadEvent(void *data)
     }
     
     try {
-        std::string accessToken = tokenStorage->readAccessToken();
+        std::string accessToken = AccessTokenStorage::getInstance()->readAccessToken();
         std::stringstream buf;
         
-        request->request(
+        Request::getInstance()->request(
             "/tracks",
             Request::Params(),
             Request::Params{
@@ -105,13 +107,19 @@ void Main::uploadEvent(void *data)
         
         if (!upload.cancelRequest) {
             try {
-                parser->parseResponse(&buf, &upload);
+                Parser parser(&buf);
+                parser.parseResponse(&upload);
+                
                 bridge->notify(upload.data["id"], "Upload complete", upload.name + " has been successfully uploaded.",  upload.data["permalink_url"]);
             } catch (SoundcloudDefaultException e) {
                 std::cout << "Soundcloud error: " << e.what() << std::endl;
                 bridge->alert(std::string("Soundcloud error: ") + e.what());
             }
         }
+    } catch (SoundcloudAuthenticationException e) {
+        std::cout << "Authentication error: " << e.what() << std::endl;
+        bridge->alert(std::string("Authentication error: ") + e.what());
+        reauthenticateEvent(nullptr);
     } catch (std::runtime_error e) {
         std::cout << "Runtime error: " << e.what() << std::endl;
         bridge->alert(std::string("Runtime error: ") + e.what());
@@ -128,8 +136,8 @@ void Main::uploadEvent(void *data)
 void Main::reauthenticateEvent(void *data)
 {
     try {
-        std::string code = tokenStorage->getCodeFromUrl(bridge->retrieveAuthenticationCode());
-        tokenStorage->storeAccessTokenFromCode(code);
+        std::string code = AccessTokenStorage::getInstance()->getCodeFromUrl(bridge->retrieveAuthenticationCode());
+        AccessTokenStorage::getInstance()->storeAccessTokenFromCode(code);
     } catch (SoundcloudDefaultException e) {
         std::string errMsg = std::string("Login error: ") + e.what();
         std::cout << errMsg << std::endl;

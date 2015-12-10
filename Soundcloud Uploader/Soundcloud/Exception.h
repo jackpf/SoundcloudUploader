@@ -18,4 +18,10 @@ public:
     SoundcloudDefaultException(std::string what) : std::runtime_error(what){}
 };
 
+class SoundcloudAuthenticationException : public SoundcloudDefaultException
+{
+public:
+    SoundcloudAuthenticationException(std::string what) : SoundcloudDefaultException(what){}
+};
+
 #endif /* defined(____FacebookException__) */

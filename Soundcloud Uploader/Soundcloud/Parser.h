@@ -20,15 +20,17 @@
 #include "Exception.h"
 #include <unordered_map>
 #include "Upload.h"
+#include <ctime>
 
 class Parser
 {
 private:
-    void parseJson(std::stringstream *, boost::property_tree::ptree *) throw(SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error);
+    boost::property_tree::ptree pt;
     
 public:
-    void parseAccessToken(std::stringstream *, std::string *) throw(SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error);
-    void parseResponse(std::stringstream *, Upload *) throw(SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error);
+    Parser(std::stringstream *);
+    void parseAccessToken(std::string *, const std::string = "access_token") throw(SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error);
+    void parseResponse(Upload *) throw(SoundcloudDefaultException, boost::property_tree::json_parser::json_parser_error);
 };
 
 #endif /* defined(__Facebook_Notifications__Parser__) */

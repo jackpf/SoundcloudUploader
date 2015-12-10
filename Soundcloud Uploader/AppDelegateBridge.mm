@@ -129,6 +129,7 @@
     [openDlg setCanChooseFiles:YES];
     [openDlg setCanChooseDirectories:NO];
     [openDlg setAllowsMultipleSelection:YES];
+    [openDlg makeKeyWindow];
     
     if ([openDlg runModalForDirectory:nil file:nil] == NSOKButton) {
         NSArray* files = [openDlg filenames];

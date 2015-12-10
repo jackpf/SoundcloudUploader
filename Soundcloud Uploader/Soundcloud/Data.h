@@ -15,7 +15,7 @@
 #define REDIRECT_URI    "https://developers.soundcloud.com/callback.html"
 #define OAUTH_URL       "https://soundcloud.com/connect"
 #define TOKEN_PATH      "/oauth2/token"
-#define SCOPE           ""
+#define SCOPE           "non-expiring"
 #define RESPONSE_TYPE   "code"
 #define STORAGE_DIR     ".SoundcloudUploader"
 

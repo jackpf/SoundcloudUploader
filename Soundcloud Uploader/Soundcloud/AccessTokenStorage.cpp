@@ -51,13 +51,13 @@ std::string AccessTokenStorage::read()
 {
     std::lock_guard<std::mutex> lock(mutex);
     
-    std::string accessToken;
+    std::stringstream accessToken;
     
     std::ifstream in(storageFile, std::ios::in);
-    in >> accessToken;
+    accessToken << in.rdbuf();
     in.close();
     
-    return accessToken;
+    return accessToken.str();
 }
 
 std::string AccessTokenStorage::getCodeFromUrl(std::string url) throw(SoundcloudDefaultException)
@@ -80,8 +80,10 @@ std::string AccessTokenStorage::storeAccessTokenFromCode(std::string code) throw
     
     Request::getInstance()->request(TOKEN_PATH, Request::Params(), Request::Params{Request::Param("client_id", CLIENT_ID), Request::Param("client_secret", CLIENT_SECRET), Request::Param("redirect_uri", REDIRECT_URI), Request::Param("code", code), Request::Param("grant_type", "authorization_code")}, &buffer);
     
-    std:: string accessToken;
-    parser.parseAccessToken(&buffer, &accessToken);
+    std::string accessToken, json;
+    
+    Parser parser(&buffer);
+    parser.parseAccessToken(&accessToken, "access_token");
     
     std::cout << "Access token: " << accessToken << std::endl;
     
@@ -90,18 +92,25 @@ std::string AccessTokenStorage::storeAccessTokenFromCode(std::string code) throw
     return accessToken;
 }
 
-std::string AccessTokenStorage::readAccessToken() throw(SoundcloudDefaultException)
+std::string AccessTokenStorage::readAccessToken() throw(SoundcloudDefaultException, SoundcloudAuthenticationException)
 {
-    std::string tokenData = read(), accessToken;
+    std::string tokenData = read(), accessToken, expiresLocal;
     
     if (tokenData.length() > 0) {
         try {
             std::stringstream buf(tokenData);
-            parser.parseAccessToken(&buf, &accessToken);
+        
+            Parser parser(&buf);
+            parser.parseAccessToken(&accessToken);
+            //parser.parseAccessToken(&expiresLocal, "expires_local");
+            
+            //if (std::stol(expiresLocal) < std::time(0)) {
+            //    throw SoundcloudAuthenticationException("Token past expiry");
+            //}
         } catch (boost::property_tree::json_parser::json_parser_error e) {
             // Corrupted data?
             store("");
-            throw SoundcloudDefaultException("Corrupted access token data, deleting data");
+            throw SoundcloudAuthenticationException("Corrupted access token data, deleting data");
         }
     }
     

@@ -27,7 +27,6 @@ private:
     static AccessTokenStorage *self;
     std::string storageFile;
     static std::mutex mutex;
-    Parser parser;
     
     AccessTokenStorage();
     void store(std::string);
@@ -38,7 +37,7 @@ public:
     static AccessTokenStorage *getInstance();
     std::string storeAccessTokenFromCode(std::string) throw(SoundcloudDefaultException);
     std::string getCodeFromUrl(std::string) throw(SoundcloudDefaultException);
-    std::string readAccessToken() throw(SoundcloudDefaultException);
+    std::string readAccessToken() throw(SoundcloudDefaultException, SoundcloudAuthenticationException);
 };
 
 #endif /* defined(__Facebook_Notifications__AccessTokenStorage__) */
